@@ -1,2 +1,3 @@
 # Maze
-simple maze game: C++ console app VCS example
+simple maze game
+cpp console app vcs example
