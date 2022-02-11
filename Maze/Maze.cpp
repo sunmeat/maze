@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <ctime>
 #include <windows.h>
 #include <conio.h>
@@ -18,14 +18,12 @@ int main()
 	CONSOLE_FONT_INFOEX cfi;
 	cfi.cbSize = sizeof(cfi);
 	cfi.nFont = 0;
-	cfi.dwFontSize.X = 0;                   // Width of each character in the font 
-	cfi.dwFontSize.Y = 72;                  // Height 
+	cfi.dwFontSize.X = 0;   
+	cfi.dwFontSize.Y = 72;            
 	cfi.FontFamily = FF_DONTCARE;
 	cfi.FontWeight = FW_NORMAL;
-	std::wcscpy(cfi.FaceName, L"Consolas"); // Choose your font 
+	wcscpy(cfi.FaceName, L"Consolas"); 
 	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
-
-	//std::cout << "Font: Consolas, Size: 24\n";
 
 	system("title Maze");
 	MoveWindow(GetConsoleWindow(), 20, 60, 1850, 900, true);
@@ -35,7 +33,6 @@ int main()
 	// 1000 - высота окна консоли
 
 	srand(time(0));
-	rand();
 
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -50,8 +47,6 @@ int main()
 		for (int x = 0; x < width; x++) // перебор столбцов
 		{
 			maze[y][x] = rand() % 4; // 4 типа объектов в игре
-
-
 
 			if (maze[y][x] == MazeObjects::ENEMY) // если в лабиринте сгенерился враг
 			{
@@ -73,14 +68,11 @@ int main()
 
 			if (x == 0 || y == 0 || x == width - 1 || y == height - 1) maze[y][x] = MazeObjects::BORDER;
 
-			if (x == 0 && y == 2 ||
-				x == 1 && y == 2 ||
-				x == 2 && y == 2) maze[y][x] = MazeObjects::HALL; // вход
+			if (x == 0 && y == 2 || x == 1 && y == 2 || x == 2 && y == 2) maze[y][x] = MazeObjects::HALL; // вход
 
 			if (x == width - 1 && y == height - 3 ||
 				x == width - 2 && y == height - 3 ||
-				x == width - 3 && y == height - 3
-				) maze[y][x] = MazeObjects::HALL; // выход
+				x == width - 3 && y == height - 3) maze[y][x] = MazeObjects::HALL; // выход
 
 		}
 	}
@@ -159,19 +151,16 @@ int main()
 	SetConsoleTextAttribute(h, Colors::RED);
 	cout << health << "\n";
 
-
-
 	while (true)
 	{
-
 		if (_kbhit()) // если было нажатие на клавиши пользователем
 		{
-			int code = _getch(); // get character получение кода нажатой клавиши
+			int code = _getch(); // get character, получение кода нажатой клавиши
 			if (code == 224) { // если это стрелка
 				code = _getch(); // получить конкретный код стрелки
 			}
 
-			// стриание персонажика в старой позиции
+			// стирание персонажика в старой позиции
 			SetConsoleCursorPosition(h, position);
 			cout << " ";
 
