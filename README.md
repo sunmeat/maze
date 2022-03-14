@@ -1,5 +1,5 @@
 # Maze
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sunmeat/maze)<br />
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sunmeat/maz)<br />
 <!-- https://shields.io/category/version -->
 
 простая консольная игра по типу лабиринта.<br /><br />
