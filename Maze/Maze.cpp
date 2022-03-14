@@ -13,8 +13,6 @@ int main()
 
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	system("color 07");
-
 	// настройки шрифта консоли
 	CONSOLE_FONT_INFOEX font; // https://docs.microsoft.com/en-us/windows/console/console-font-infoex
 	font.cbSize = sizeof(font);
