@@ -52,7 +52,7 @@ int main()
 
 			if (maze[y][x] == MazeObject::ENEMY) // если в лабиринте сгенерился враг
 			{
-				int probability = rand() % 10; // 0...9, если выпало 0 - враг останется, останется только одна пятая часть врагов
+				int probability = rand() % 15; // 0...14, если выпало 0 - враг останется, останется только одна пятая часть врагов
 				if (probability != 0) // убираем врага
 				{
 					maze[y][x] = MazeObject::HALL; // на место врага ставим коридор
@@ -161,19 +161,16 @@ int main()
 			if (code == KeyCode::ENTER)
 			{
 				cout << "ENTER!\n";
-				system("cls");
 				exit(0);
 			}
 			else if (code == KeyCode::ESCAPE)
 			{
 				cout << "ESCAPE!\n";
-				system("cls");
 				exit(0);
 			}
 			else if (code == KeyCode::SPACE)
 			{
 				cout << "SPACE!\n";
-				system("cls");
 				exit(0);
 			}
 			else if (code == KeyCode::LEFT
@@ -182,11 +179,11 @@ int main()
 			{
 				position.X--;
 			}
-			else if (code == KeyCode::RIGHT // если я собрался пойти направо
+			else if (code == KeyCode::RIGHT // если ГГ собрался пойти направо
 				&& maze[position.Y][position.X + 1] != MazeObject::WALL
 				&& maze[position.Y][position.X + 1] != MazeObject::BORDER)
-				// и при этом в лабиринте на той же строке (где смайлик) и
-				// немного (на одну ячейку) правее на 1 столбец от смайлика
+				// и при этом в лабиринте на той же строке (где ГГ) и
+				// немного (на одну ячейку) правее на 1 столбец от ГГ
 			{
 				position.X++;
 			}
@@ -203,7 +200,7 @@ int main()
 				position.Y++;
 			}
 
-			// показ персонажика в новой позиции
+			// показ ГГ в новой позиции
 			SetConsoleCursorPosition(h, position);
 			SetConsoleTextAttribute(h, Color::BLUE);
 			cout << (char)2;
@@ -213,14 +210,14 @@ int main()
 			if (position.Y == HEIGHT - 3 &&
 				position.X == WIDTH - 1)
 			{
-				MessageBoxA(0, "найден выход из лабиринта!", "ПОБЕДА!", 0);
+				MessageBoxA(0, "you find exit!", "WIN!", 0);
 				system("cls");
 				exit(0);
-				// main(); // для запуска сначала но на другой рандомной локации
+				// main(); // для запуска сначала, но на другой рандомной локации
 			}
 
 			// пересечение с монетками
-			// если в лабиринте по позиции смайлика (под ним) находится монетка
+			// если в лабиринте по позиции ГГ (под ним) находится монетка
 			if (maze[position.Y][position.X] == MazeObject::COIN)
 			{
 				coins++; // на одну монетку собрали больше
@@ -235,7 +232,7 @@ int main()
 			}
 
 			// пересечение с врагами
-			// если в лабиринте по позиции смайлика (под ним) находится враг
+			// если в лабиринте по позиции ГГ (под ним) находится враг
 			if (maze[position.Y][position.X] == MazeObject::ENEMY)
 			{
 				health -= 20;
@@ -246,11 +243,11 @@ int main()
 				cout << "HEALTH: ";
 				SetConsoleTextAttribute(h, Color::RED);
 				cout << health << " \n";
-				maze[position.Y][position.X] = MazeObject::HALL; // убираем монетку из лабиринта
+				maze[position.Y][position.X] = MazeObject::HALL; // убираем врага из лабиринта
 
 				if (health <= 0)
 				{
-					int answer = MessageBoxA(0, "здоровье закончилось!\n\nхотите начать сначала?", "ПОРАЖЕНИЕ!", MB_YESNO);
+					int answer = MessageBoxA(0, "health is over!\n\nwant to play again?", "FAIL!", MB_YESNO);
 					system("cls");
 					if (answer == IDYES)
 					{
