@@ -2,7 +2,7 @@
 
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/sunmeat/maze)](https://github.com/sunmeat/maze/releases/latest)
 
-> Проста консольна гра типу лабіринту.
+> Проста консольна гра-лабіринт.
 
 ### Правила гри:
 - ![#ffd700](https://via.placeholder.com/15/ffd700/ffd700?text=+) **Збирай монети!** — накопичуй очки.
